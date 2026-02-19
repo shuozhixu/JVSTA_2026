@@ -1,4 +1,4 @@
-#shear loading for x[111], y[11-2] and z[-110]. Line direction along z axis, slip direction along x axis and normal direction of glide plane along y direction.
+#Line direction along z axis, slip direction along x axis and normal direction of glide plane along y direction.
 
 
 # ------- initialization      -------------------------------------------------
