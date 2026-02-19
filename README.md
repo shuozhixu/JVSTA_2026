@@ -2,15 +2,17 @@
 
 ## Foreword
 
-The purpose of this project is to calculate the local slip resistances (LSR) in body-centered cubic random alloys. MoNbTi is used here an example.
+The purpose of this project is to calculate the local slip resistances (LSR) in body-centered cubic (BCC) random alloys. MoNbTi is used here as an example.
 
-To use the [ML model developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should, for a given alloy, calculate the mean LSR of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. For each unique combination of dislocation character and slip plane, at least 10 LSR valuels are needed to obtain the mean LSR value. In other words, for a given alloy, 80 LAMMPS simulations are needed to obtain 80 LSR values. It follows that 8 mean LSR values will be provided to the ML model for that alloy.
+To use the [ML model developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should, for a given alloy, calculate the mean LSR of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. For each unique combination of dislocation character and slip plane, at least 10 LSR valuels are needed to obtain the mean LSR value. In other words, for a given alloy, 80 LAMMPS simulations are needed to obtain 80 LSR values. It follows that 8 mean LSR values are obtained and provided to the ML model as inputs for that alloy.
 
 ## LAMMPS
 
 Following [another project](https://github.com/shuozhixu/Modelling_2024), we can build LAMMPS with the MANYBODY package and submit jobs on [OSCER](http://www.ou.edu/oscer.html).
 
 To run a LAMMPS simulation, put three files --- an interatomic potential file, an input file, and a data file --- into the same directory. Determination of the LSR should follow that of the [Peierls stress](https://github.com/shuozhixu/LAMMPSatOU).
+
+Before running any LSR simulations for a given BCC alloy, one needs to know its lattice parameter. Calculation of the lattice parameter for a given BCC alloy can follow [this GitHub repository](https://github.com/shuozhixu/Modelling_2024), where MoNbTa was used as an example.
 
 ## Interatomic potential
 
@@ -34,7 +36,7 @@ Make two changes to the input file
 
 ## Data files
 
-Data files are generated using [Atomsk](https://atomsk.univ-lille.fr). Make sure the software is installed. Atomsk scripts are provided in the `data` directory in this GitHub repository. Please use the correct script to generate the data file for each combination of dislocation character (edge or screw) and slip plane (from {110} to {134}). For example, to generate the data file for the edge dislocation on the {110} plane, run
+Data files are generated using [Atomsk](https://atomsk.univ-lille.fr). Make sure the software is installed. Atomsk scripts are provided in the `data` directory in this GitHub repository. Use the correct script to generate the data file for each combination of dislocation character (edge or screw) and slip plane (from {110} to {134}). For example, for the edge dislocation on the {110} plane, run
 
 	sh 110_edge.sh 
 
@@ -46,8 +48,6 @@ Make two changes to the atomsk script
 
 - line 5, use the correct lattice parameter, in &Aring;
 - change the element names; by default, the three elements are Mo, Nb, and Ti
-
-Calculation of the lattice parameter for a given alloy can follow [this GitHub repository](https://github.com/shuozhixu/Modelling_2024), where MoNbTa was used as an example.
 
 ## References
 
