@@ -47,7 +47,7 @@ Make two changes to the atomsk script
 - line 5, use the correct lattice parameter, in &Aring;
 - change the element names; by default, the three elements are Mo, Nb, and Ti
 
-Calculation the lattice parameter for a given alloy can follow [this GitHub repository](https://github.com/shuozhixu/Modelling_2024), where MoNbTa was used as an example.
+Calculation of the lattice parameter for a given alloy can follow [this GitHub repository](https://github.com/shuozhixu/Modelling_2024), where MoNbTa was used as an example.
 
 ## References
 
