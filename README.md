@@ -4,7 +4,7 @@
 
 The purpose of this project is to calculate the local slip resistances (LSR) in body-centered cubic random alloys. MoNbTi is used here an example.
 
-To use the [ML models developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should, for a given alloy, calculate the LSR of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. In other words, eight LAMMPS simulations are needed to obtain eight LSR values.
+To use the [ML model developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should, for a given alloy, calculate the mean LSR of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. For each unique combination of dislocation character and slip plane, at least 10 LSR valuels are needed to obtain the mean LSR value. In other words, for a given alloy, 80 LAMMPS simulations are needed to obtain 80 LSR values. It follows that 8 mean LSR values will be provided to the ML model for that alloy.
 
 ## LAMMPS
 
@@ -34,14 +34,20 @@ Make two changes to the input file
 
 ## Data files
 
-Data files are generated using [Atomsk](https://atomsk.univ-lille.fr). Atomsk scripts are provided in the `data` directory in this GitHub repository.
+Data files are generated using [Atomsk](https://atomsk.univ-lille.fr). Make sure the software is installed. Atomsk scripts are provided in the `data` directory in this GitHub repository. Please use the correct script to generate the data file for each combination of dislocation character (edge or screw) and slip plane (from {110} to {134}). For example, to generate the data file for the edge dislocation on the {110} plane, run
+
+	sh 110_edge.sh 
+
+which will generate a data file named `data.MoNbTi_edge`.
 
 ### Alloys other than MoNbTi
 
-Make two changes to the input file
+Make two changes to the atomsk script
 
-- line 16, use the correct data file name
-- line 28, use the correct element names
+- line 5, use the correct lattice parameter, in &Aring;
+- change the element names; by default, the three elements are Mo, Nb, and Ti
+
+Calculation the lattice parameter for a given alloy can follow [this GitHub repository](https://github.com/shuozhixu/Modelling_2024), where MoNbTa was used as an example.
 
 ## References
 
