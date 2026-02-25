@@ -3,16 +3,16 @@
 rm -f *.lmp
 
 a=3.234
-d=201.134
-e=249.326
+d=197.395
+e=250.4025
 
-x=$(echo "scale=5;$d*$a/3.44" | bc)
+x=$(echo "scale=5;$d*$a/3.234" | bc)
 
-y=$(echo "scale=5;$e*$a/3.44" | bc)
+y=$(echo "scale=5;$e*$a/3.234" | bc)
 
 b=$(echo "scale=5;$a*sqrt(3.)/2." | bc)
 
-atomsk --create bcc $a Nb orient [-1-12] [1-10] [111] -duplicate 48 103 2 supercell.cfg
+atomsk --create bcc $a Nb orient [-1-12] [1-10] [111] -duplicate 50 110 2 supercell.cfg
 
 atomsk supercell.cfg -dislocation $x $y screw z y $b dis.imd
 
@@ -32,9 +32,9 @@ atomsk screw_Nb_110_40nm_pad_mod.cfg screw_Nb.cfg
 
 #rm *.cfg *.imd *.xsf screw_Ni.lmp
 
-atomsk screw_Nb.cfg -select random 19776 Nb -sub Nb Mo MoNb.cfg
+atomsk screw_Nb.cfg -select random 22000 Nb -sub Nb Mo MoNb.cfg
 
-atomsk MoNb.cfg -select random 19776 Nb -sub Nb Ti MoNbTi.cfg lmp
+atomsk MoNb.cfg -select random 22000 Nb -sub Nb Ti MoNbTi.cfg lmp
 
 mv MoNbTi.lmp data.MoNbTi_screw
 

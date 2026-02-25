@@ -8,11 +8,13 @@ Before calculating the LSRs in any BCC alloy, one needs to know its lattice para
 
 ## LAMMPS
 
-To use the [ML model developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should, for a BCC alloy, calculate the mean LSRs of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. For each unique combination of dislocation character and slip plane, 10 LSR valuels are needed to obtain the mean LSR value. In other words, for a BCC alloy, 80 LAMMPS simulations are needed to obtain 80 LSR values. It follows that 8 mean LSR values are obtained and provided to the ML model as inputs for that alloy.
+For a BCC alloy, one can calculate the mean LSRs of both edge and screw dislocations on all four slip planes, {110}, {112}, {123}, and {134}. For each unique combination of dislocation character and slip plane, 10 LSR valuels are needed to obtain the mean LSR value. In other words, for a BCC alloy, 80 LAMMPS simulations are needed to obtain 80 LSR values. It follows that 8 mean LSR values are obtained.
 
 To run any one of the 80 LAMMPS simulations, place three files --- an interatomic potential file, an input file, and a data file --- into the same directory. It is estimated that each simulation takes 10--30 hours with 128 CPU cores. Determination of the LSR should follow that of the [Peierls stress](https://github.com/shuozhixu/LAMMPSatOU). Currently there is no way to obtain the LSR value automatically from the simulation result.
 
 If the existing LAMMPS distribution does not have the MANYBODY package, one can follow [another GitHub repository](https://github.com/shuozhixu/Modelling_2024) to build LAMMPS with that package.
+
+To use the [ML model developed by Jian et al.](https://github.com/wrj2018/LSR_2026), one should use 6 mean LSR values, excluding those on the {134} plane, as inputs. In other words, 60, rather than 80, LAMMPS simulations are needed for each BCC alloy if the purpose is to use the ML model.
 
 ## Interatomic potential file
 
@@ -35,11 +37,13 @@ Make two changes to the input file
 
 ## Data file
 
-Install [Atomsk](https://atomsk.univ-lille.fr) and use it to generate data files. Atomsk scripts are provided in the `data` directory in this GitHub repository. Use the correct script to generate the data file for each combination of dislocation character (edge or screw) and slip plane (from {110} to {134}). For example, for the edge dislocation on the {110} plane, run
+Install [Atomsk](https://atomsk.univ-lille.fr) and use it to generate data files. Atomsk scripts are provided in the `data` directory in this GitHub repository. Use the correct script to generate the data file for each combination of dislocation character (edge or screw) and slip plane (from {110} to {134}). For example, for the screw dislocation on the {110} plane, run
 
-	sh 110_edge.sh 
+	sh 110_screw.sh 
 
-which will generate a data file named `data.MoNbTi_edge`.
+which will generate a data file named `data.MoNbTi_screw`.
+
+For the same slip plane, either `110_edge1.sh` or `110_edge2.sh` should work. They refer to two different ways to build the atomistic structure containing an edge dislocation. For details, please refer to Figure 3 of [this paper](https://doi.org/10.1007/s44210-025-00060-8).
 
 ### Alloys other than MoNbTi
 
