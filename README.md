@@ -43,7 +43,7 @@ Install [Atomsk](https://atomsk.univ-lille.fr) and use it to generate data files
 
 which will generate a data file named `data.MoNbTi_screw`.
 
-For the same slip plane, either `110_edge1.sh` or `110_edge2.sh` should work. They refer to two different ways to build the atomistic structure containing an edge dislocation. For details, please refer to Figure 3 of [this paper](https://doi.org/10.1007/s44210-025-00060-8).
+For the same slip plane, either `110_edge1.sh` or `110_edge2.sh` should work for the edge dislocation. They refer to the two different ways to build the atomistic structure containing an edge dislocation. For details, please refer to Figure 3 of [this paper](https://doi.org/10.1007/s44210-025-00060-8).
 
 ### Alloys other than MoNbTi
 
