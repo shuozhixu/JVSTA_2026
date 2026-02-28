@@ -5,7 +5,7 @@ rm -f *.lmp
 a=3.234
 p=0.3
 
-d=202.436
+d=202.119
 e=247.6705
 
 x=$(echo "scale=5;$d*$a/3.234" | bc)
@@ -16,7 +16,7 @@ b=$(echo "scale=5;$a*sqrt(3.)/2." | bc)
 
 atomsk --create bcc $a Nb orient [111] [31-4] [-57-2] -duplicate 145 30 1 supercell.cfg
 
-atomsk supercell.cfg -dislocation $x $y edge_rm Z Y $b $p -wrap edge_Nb.cfg
+atomsk supercell.cfg -dislocation $x $y edge_add Z Y $b $p -wrap edge_Nb.cfg
 
 atomsk edge_Nb.cfg -select random 112723 Nb -sub Nb Mo MoNb.cfg
 
