@@ -18,9 +18,9 @@ atomsk --create bcc $a Nb orient [111] [31-4] [-57-2] -duplicate 145 30 1 superc
 
 atomsk supercell.cfg -dislocation $x $y edge_add Z Y $b $p -wrap edge_Nb.cfg
 
-atomsk edge_Nb.cfg -select random 112723 Nb -sub Nb Mo MoNb.cfg
+atomsk edge_Nb.cfg -select random 113489 Nb -sub Nb Mo MoNb.cfg
 
-atomsk MoNb.cfg -select random 112723 Nb -sub Nb Ti MoNbTi.cfg lmp
+atomsk MoNb.cfg -select random 113489 Nb -sub Nb Ti MoNbTi.cfg lmp
 
 mv MoNbTi.lmp data.MoNbTi_edge
 
