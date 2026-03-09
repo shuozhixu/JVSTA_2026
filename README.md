@@ -56,5 +56,5 @@ Make two changes to the atomsk script
 
 If you use any files from this GitHub repository, please cite
 
-- Anshu Raj, Wu-Rong Jian, Shuozhi Xu, Local slip resistances and critical resolved shear stresses for edge dislocation glide on high-order planes in two refractory multi-principal element alloys, J. Vac. Sci. Tech. A (in press)
+- Anshu Raj, Wu-Rong Jian, Shuozhi Xu, [Local slip resistances and critical resolved shear stresses for edge dislocation glide on high-order planes in two refractory multi-principal element alloys](https://doi.org/10.1116/6.0005215), J. Vac. Sci. Tech. A 44 (2026) 033201
 - Wu-Rong Jian, Arjun S. Kulathuvayal, Hanfeng Zhai, Anshu Raj, Xiaohu Yao, Yanqing Su, Shuozhi Xu, Irene J. Beyerlein, [Atomistic and data‑driven insights into the local slip resistances in random refractory multi-principal element alloys](https://doi.org/10.1016/j.ijplas.2026.104635), Int. J. Plast. 199 (2026) 104635
